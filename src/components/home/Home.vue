@@ -12,7 +12,7 @@
       <el-col :span="6">
         <div>
          欢迎上海前端31期星耀会员
-         <a href="javascript:;" class="logout">退出</a>
+         <a href="javascript:;" class="logout" @click="logout">退出</a>
         </div>
       </el-col>
     </el-row>
@@ -54,7 +54,24 @@
 <script>
 export default {
   methods: {
-
+    // 退出功能
+    async logout () {
+      try {
+        await this.$confirm('您是否确定退出','温馨提示',{
+          confirmButtonText: '确定',
+           cancelButtonText: '取消',
+           type:'warning'
+        })
+        // 退出登录逻辑
+        this.$router.push('/login')
+        localStorage.removeItem('token')
+      } catch (e) {
+        this.$message({
+          type:'info',
+          message:'已取消退出'
+        })
+      }
+    }
   }
 }
 </script>
