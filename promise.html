@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // promise 是一种异步编程解决方案  解决了回调函数，回调地狱的问题
+    const p = new Promise((resolve,reject) => {
+      setTimeout(() =>{
+        reject('错误')
+      },1000)
+    })
+    p.then(res => {
+      console.log(res)
+    }).catch(err =>{
+      console.log(err)
+    })
+  </script>
+</body>
+</html>

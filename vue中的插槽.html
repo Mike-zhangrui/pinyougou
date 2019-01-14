@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <!-- 使用组件 -->
+    <msg-box>
+       <h2>您是否确定删除？</h2>
+    </msg-box>
+    <msg-box><p>您是否确定退出？</p></msg-box>
+    <msg-box>您是否确定修改</msg-box>
+    <msg-box></msg-box>
+  </div>
+  <script src="./vue.js"></script>
+  <script>
+    // 什么时候使用插槽？   封装组件，为了增加组件的复用性
+    // 默认情况下，组件子节点是不会出现页面中的
+    // 可以通过Vue中的插槽来使用 组件子节点
+    // 1.在模板中需要动态变化的地方，添加slot 组件 （占位置）
+    // 2.将要传递的内容作为组件标签的子节点
+    // 3.slot组件，就会被替换为组件标签的子节点
+    Vue.component('msg-box', {
+      template: `
+      <div>
+         <header>提示: </header>
+         <slot>默认值！！！</slot>
+         <footer>
+          <button>取消</button>
+          <button>确定</button>
+         </footer>
+      </div>
+      `
+    })
+    const vm  = new Vue({
+      el: '#app',
+      data: {
+        
+      }
+    })
+  </script>
+</body>
+</html>
